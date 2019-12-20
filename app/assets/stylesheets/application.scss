@@ -21,6 +21,9 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+.login {
+    padding-left: 150px;
+}
 .sign_in {
     color: #666;
 }
@@ -46,8 +49,9 @@
     padding-top: 60px;
     padding-left: 150px;
 }
-body{
-	padding-top: 30px;
+
+.nav-title{
+    color: white;
 }
 
 .form {
@@ -92,7 +96,4 @@ p {
 }
 .row:before {
     display: none;
-}
-#error_explanation {
-    color: red;
 }

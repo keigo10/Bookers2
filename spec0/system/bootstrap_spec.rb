@@ -6,7 +6,7 @@ describe 'boostrapのテスト' do
 	describe 'グリッドシステムのテスト' do
 		before do
 			visit new_user_session_path
-			fill_in 'Name', with: user.name
+			fill_in 'user[name]', with: user.name
 			fill_in 'Password', with: user.password
 			click_button 'Log in'
 		end

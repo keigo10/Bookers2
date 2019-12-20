@@ -1,6 +1,4 @@
-<body>
 
-  	<div class="body">
       <div class="container">
 
         <p id="notice"></p>
@@ -8,25 +6,7 @@
 <%= flash[:notice] %>
   <div class="row">
   <div class="col-xs-3">
-    <h2>User info</h2>
-        <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, fallback: 'no_image.jpg' %>
-      <table class= "table">
-      <tbody><tr></tr>
-      <tr>
-        <th>name</th>
-        <th><%= @book.user.name %></th>
-      </tr>
-      <tr>
-        <th>introduction</th>
-        <th><%=@book.user.introduction%></th>
-      </tr>
-      </tbody>
-     </table>
- <% if @book.user.id == current_user.id %>
-<div class="row">
-  <%= link_to "", edit_user_path(@book.user),class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench user_#{@book.user.id} " %>
-</div>
-<% end %>
+  <%= render 'users/user_info', user: @book.user %>
     <%= render 'new_book', book: @book_new %>
   </div>
 
@@ -48,8 +28,8 @@
         </td>
         <td><%= @book.body %></td>
         <% if @book.user.id == current_user.id %>
-        <td><%= link_to 'edit', edit_book_path(@book.id),class:"btn-sm btn-success edit_book_16210" %></td>
-        <td><%= link_to 'destroy', book_path(@book.id), method: :delete ,class:"btn-sm btn-danger destroy_book_16210",data: { confirm: '削除しますか？' }%></td>
+          <td><%= link_to 'Edit', edit_book_path(@book.id),class: "btn-sm btn-success" %></td>
+          <td><%= link_to 'Destroy', book_path(@book.id), method: :delete ,class: "btn-sm btn-danger",data: { confirm: '削除しますか？' }%></td>
         <% end %>
 
       </tr>
@@ -58,7 +38,3 @@
   </div>
 </div>
       </div>
-    </div>
-
-
-</body>

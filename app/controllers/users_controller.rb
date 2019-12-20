@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
- # before_action :authenticate_user!
+ before_action :authenticate_user!
   def index
       @user= current_user
   	  @users =  User.all
@@ -23,15 +23,18 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user.id != current_user.id
+      redirect_to user_path(current_user.id)
+    end
   end
 
  def update
-      @user = User.find(params[:id])
+  @user = User.find(params[:id])
    if @user.update(user_params)
+     flash[:notice] = "successfully"
      redirect_to user_path(@user.id)
-     flash[:update] = "Userdate was successfully updated."
-  else
-    render :edit
+   else
+     render :edit
   end
  end
 

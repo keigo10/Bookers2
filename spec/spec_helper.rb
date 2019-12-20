@@ -18,6 +18,10 @@ RSpec.configure do |config|
 	config.before(:each, type: :system) do
 		driven_by :selenium_chrome_headless
 	end
+	# config.before(:suite) do
+ #    DatabaseCleaner.strategy = :transaction
+ #    DatabaseCleaner.clean_with(:truncation)
+ #  end
 	# config.after(:suite) do
 	# 	DatabaseCleaner.strategy = :transaction
 	# 	DatabaseCleaner.clean_with(:truncation)
